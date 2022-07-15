@@ -1,0 +1,19 @@
+<div class="wrapper">
+        <div class="logo">
+            <img class="logoImg" src="../../images/WhatsApp Image 2022-06-27 at 10.02.06 PM.jpeg" alt="">
+        </div>
+        <div class="text-center pt-4 name">
+            SMELL WELL
+        </div>
+        <form action="/login" method="post" class="p-3 mt-3">
+        {{#if loginErr}}
+              <p class="error text-danger">Invalid Email Address or password</p>
+        {{/if}}
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="email" name="userName" id="username" placeholder="Email Address">
+            </div>
+            
+            <button class="btn mt-3">Reset Password</button>
+        </form>
+</div>
