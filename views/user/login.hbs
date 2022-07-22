@@ -59,14 +59,10 @@
                                 <span class="app-brand-text demo text-body fw-bolder">Smell Well</span>
                             </a>
                         </div>
-                        <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Smell Well! 👋</h4>
-                        <p class="mb-4">Please sign-in to your account and start the adventure</p>
-
                         <form id="userLogin" class="mb-3" action="/login" method="POST">
-                            {{#if loginErr}}
+                            {{!-- {{#if loginErr}}
                             <p class="error text-danger">Invalid Email Address or password</p>
-                            {{/if}}
+                            {{/if}} --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label>
                                 <input type="text" class="form-control" id="email" name="email"
@@ -87,12 +83,6 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember-me" name="terms" required/>
-                                    <label class="form-check-label" for="remember-me"> Remember Me </label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                             </div>
                         </form>
@@ -110,14 +100,39 @@
         </div>
     </div>
 </section>
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"
-></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script>
-  $("#userLogin").validate();
+    $("#userLogin").validate({
+        errorPlacement: function (error, element) {
+            console.log('dd', element.attr("name"))
+            if (element.attr("name") == "password") {
+                error.insertAfter(element.parent("div"));
+            } else {
+                error.insertAfter(element)
+            }
+        },
+        rules: {
+            password: {
+                required: true,
+                minlength: 3
+            },
+            email: {
+                required: true,
+                email: true
+            }
+
+        },
+        messages: {
+            password: {
+                required: "Enter password",
+                minlength: "Enter minimum 5 characters"
+            },
+            email: {
+                required: "Enter Email",
+                email: "Enter valid email address"
+            }
+        }
+    });
 </script>

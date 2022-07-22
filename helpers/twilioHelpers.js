@@ -1,4 +1,4 @@
-const client = require('twilio')('ACf402dd4a95aa1517321354a9418240c6','8a3decb119e31f0507a41e86fd56524e')
+const client = require('twilio')('ACf402dd4a95aa1517321354a9418240c6','2b0f868fcfa2477338bddaed1770b812')
 const serviceSid = "VAa2303d12516b4d29bc74255ffdbc5742"
 module.exports = {
     doSms:(noData)=>{

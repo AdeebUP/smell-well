@@ -1,0 +1,38 @@
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">All Users</h6>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl NO.</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each details}}
+                        <tr>
+                            <th scope="row">{{inc @index}}</th>
+                            <td>{{this.username}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.phone}}</td>
+                            <td>{{#if blockUsers}}
+                                <a href="/admin/userManage/unblock_users/{{this._id}}" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure to Un Block {{this.name}}?')">Unblock</a>
+                                {{else}}
+                                <a href="/admin/userManage/block_users/{{this._id}}" class="btn btn-primary"
+                                    onclick="return confirm('Are you sure to Block {{this.name}}?')">Block</a>
+                                {{/if}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
