@@ -1,0 +1,64 @@
+{{>user-header1}}
+{{!-- view order MANAGE--}}
+<div class="dash-container mt-5 p-4">
+    <h4 class="text-center mb-5">All Orders</h4>
+    <section>
+        <div class="container shadow p-2">
+            <table class="table " id="placed">
+                <thead>
+                    <tr>
+                        <th scope="col">SL.NO</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">MOBILE</th>
+                        <th scope="col">AMOUNT</th>
+                        <th scope="col">PAYMENT</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">VIEW</th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orders}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.deliveryDetails.Phone}}</td>
+                        <td>{{this.totalAmount}}</td>
+                        <td>{{this.paymentMethod}}</td>
+                        <td>{{this.status}}</td>
+                        <td>
+                            <button class="btn btn-success text-white"><a href="/view-order-products/{{this._id}}">View
+                                    Products</a>
+                            </button>
+                        </td>
+                        {{#if cancel}}
+
+                        {{else}}
+                        <td>
+                            <button class="btn btn-danger text-white"><a href="/cancelOrder/{{this._id}}">Cancel</a>
+                            </button>
+                        </td>
+                        {{/if}}
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+            $('#hide').css('display', 'block');
+        });
+
+
+        var table = $('#placed').DataTable();
+    </script>
+</div>
+
+{{>user-footer}}

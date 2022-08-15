@@ -1,0 +1,49 @@
+{{!-- CATEGORY MANAGE--}} <div class="dash-container mt-5 p-4">
+    <h4 class="text-center mb-5">All Category</h4>
+    <section>
+        <div class="container shadow p-2">
+            <table class="table " id="placed">
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each category}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{this.category_name}}</td>
+                        <td><button class="btn-primary"><a
+                                    onclick="return confirm('Are you sure to edit this category')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/edit-category/{{this._id}}">EDIT</a></button></td>
+                        <td><button class="btn-danger"><a
+                                    onclick="return confirm('Are you sure to delete this category')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/delete-category/{{this._id}}">DELETE</a></button></td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+            $('#hide').css('display', 'block');
+        });
+
+
+        var table = $('#placed').DataTable();
+    </script>
+</div>
+
+<!-- / category management -->

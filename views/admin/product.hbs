@@ -1,0 +1,59 @@
+{{!-- PRODUCT MANAGE--}}
+<div class="dash-container mt-5 p-4">
+    <h4 class="text-center mb-5">All Products</h4>
+    <section>
+        <div class="container shadow p-2">
+            <table class="table " id="placed">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl.No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each product}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td> {{this.product_name}}</td>
+                        <td>{{this.brand}}</td>
+                        <td>{{this.MRP}}</td>
+                        <td><img style="width:50px; height:50px" src="/images/{{this.images.[0]}}" alt=""
+                                class="rounded" /></td>
+                        <td>{{this.category}}</td>
+                        <td>{{this.stock}}</td>
+                        <td><button class="btn-primary"><a onclick="return confirm('Are you sure to edit')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/edit-product/{{this._id}}">EDIT</a></button></td>
+                        <td><button class="btn-danger"><a onclick="return confirm('Are you sure to delete')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/delete-product/{{this._id}}">DELETE</a></button></td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+            $('#hide').css('display', 'block');
+        });
+
+
+        var table = $('#placed').DataTable();
+    </script>
+</div>
+
+{{!-- PRODUCT MANAGE--}}

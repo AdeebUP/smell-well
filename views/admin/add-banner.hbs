@@ -1,0 +1,50 @@
+{{!-- add product --}}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Banner Manage/</span> Add Banner</h4>
+
+    <!-- Basic Layout -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Add new Banner</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/add-banner" enctype="multipart/form-data" method="post" id="add-banner">
+
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Small Text</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="small_text"
+                                    placeholder="Enter the text " />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Big Text</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="big_text" placeholder="Enter the text " />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="formFileMultiple" class="col-sm-2 col-form-label">Upload
+                                Image</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="image" accept="image/*" type="file"
+                                    id="formFileMultiple" multiple />
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Publish Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

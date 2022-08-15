@@ -1,0 +1,169 @@
+{{!-- add product --}}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Product Manage/</span> Add Product</h4>
+
+    <!-- Basic Layout -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Add new Product</h5>
+                    {{!-- <small class="text-muted float-end">Default label</small> --}}
+                </div>
+                <div class="card-body">
+                    <form action="/admin/add-product" enctype="multipart/form-data" method="post" id="add-product">
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-name">Product
+                                Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="product_name" class="form-control" id="basic-default-name"
+                                    placeholder="Enter Product Name " />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Brand</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="brand" placeholder="Brand Name " />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-select">Category</label>
+                            <div class="col-sm-10">
+
+                                <select name="category" class="form-select">
+                                    <option value="" style="color: black!important;" select:invalid { color:grey; } selected>Choose Category</option>
+                                    {{#each category}}
+                                    <option style="color: black;">{{this.category_name}}</option>
+                                    {{/each}}
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Subcategory</label>
+                            <div class="col-sm-10">
+                                <select name="subcategory" class="form-select">
+                                    <option disabled selected hidden>Choose Sub-Category</option>
+                                    {{#each subcategory}}
+                                    <option style="color: black;">{{this.subcategory_name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Maximum
+                                Retail Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="MRP" placeholder="MRP" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Discount
+                                (%)</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="discount"
+                                    placeholder="Discount in Percentage " />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-company">Stock</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="stock" id="basic-default-company"
+                                    placeholder="Stock Details" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
+                            <div class="col-sm-10">
+                                <textarea id="basic-default-message" name="description" class="form-control"
+                                    placeholder="Description...."
+                                    aria-describedby="basic-icon-default-message2"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="formFileMultiple" class="col-sm-2 col-form-label">Upload
+                                Image</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="image" accept="image/*" type="file"
+                                    id="formFileMultiple" multiple />
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Publish Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script>
+    $("#add-product").validate({
+        rules: {
+            product_name: {
+                required: true
+            },
+            brand: {
+                required: true
+            },
+            category: {
+                required: true
+            },
+            subcategory: {
+                required: true
+            },
+            MRP: {
+                required: true
+            },
+            discount: {
+                required: true
+            },
+            stock: {
+                required: true
+            },
+            description: {
+                required: true
+            },
+            image: {
+                required: true
+            }
+        },
+        messages: {
+            product_name: {
+                required: "Enter your product name"
+            },
+            brand: {
+                required: "Enter your brand name"
+            },
+            category: {
+                required: "Enter your product category"
+            },
+            subcategory: {
+                required: "Enter your product subcategory"
+            },
+            MRP: {
+                required: "Enter your product price"
+            },
+            discount: {
+                required: "Enter product Discount in Percentage"
+            },
+            stock: {
+                required: "Enter the product stock "
+            },
+            description: {
+                required: "Enter the product details"
+            },
+            image: {
+                required: "Please chosen Atleast one image"
+            }
+        }
+    });
+</script>

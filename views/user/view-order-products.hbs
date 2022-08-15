@@ -1,0 +1,42 @@
+{{>user-header1}}
+<div class="bg0 m-t-23">
+    <div class="container">
+        <div class="row isotope-grid">
+
+            {{#each products}}
+
+            {{#each this}}
+            {{#if product_name}}
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                <!-- Block2 -->
+                <div class="block2">
+                    <div class="block2-pic hov-img0">
+                        <img src="/images/{{this.images.[0]}}" alt="IMG-PRODUCT">
+                    </div>
+
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l ">
+                            <a href="/product-detail{{_id}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                {{product_name}}
+                            </a>
+
+                            <span class="stext-105 cl3">
+                                {{MRP}}
+                            </span>
+
+                            <span class="stext-105 cl3">
+                                Quantity:{{../quantity}}
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{/each}}
+            {{/each}}
+        </div>
+    </div>
+
+    {{>user-footer}}

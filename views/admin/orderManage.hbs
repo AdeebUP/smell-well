@@ -1,0 +1,152 @@
+{{!-- <div style="margin: 20px;">
+    <div style="margin-top: 110px;">
+        <table class="table" id="table_id">
+
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">SL.NO</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">MOBILE</th>
+                    <th scope="col">AMOUNT</th>
+                    <th scope="col">PAYMENT</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">ACTION</th>
+                    <th scope="col">VIEW</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderManage}}
+                <tr>
+                    <th scope="row">{{inc @index}}</th>
+                    <td>{{this.date}}</td>
+                    <td>{{this.deliveryDetails.Phone}}</td>
+                    <td>{{this.totalAmount}}</td>
+                    <td>{{this.paymentMethod}}</td>
+                    <td>{{this.status}}</td>
+                    <td>
+                        {{#if cancel}}
+                        <p>cancelled</p>
+                        {{else}}
+                        <select class="bg-dark text-white" name="forma" onchange="location = this.value;">
+
+                            <option>{{this.status}}</option>
+                            <option value="/admin/status-shipped?id={{this._id}}&userId={{this.userId}}">shipped
+                            </option>
+                            <option value="/admin/status-delivered?id={{this._id}}">delivered
+                            </option>
+                            <option value="/admin/status-cancelled?id={{this._id}}&userId={{this.userId}}">cancel
+                            </option>
+
+                            {{/if}}
+                        </select>
+
+                    </td>
+
+
+                    <td><a href="/admin/viewUserProducts/{{this._id}}" class="btn btn-primary">details</a></td>
+
+
+
+
+
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div> --}}
+
+{{!--
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script> --}}
+
+{{!-- ORDER MANAGE--}}
+<div class="dash-container mt-5 p-4">
+    <h4 class="text-center mb-5">All order</h4>
+    <section>
+        <div class="container shadow p-2">
+            <table class="table " id="placed">
+                <thead>
+                    <tr>
+                        <th scope="col">SL.NO</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">MOBILE</th>
+                        <th scope="col">AMOUNT</th>
+                        <th scope="col">PAYMENT</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">ACTION</th>
+                        <th scope="col">VIEW</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orderManage}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.deliveryDetails.Phone}}</td>
+                        <td>{{this.totalAmount}}</td>
+                        <td>{{this.paymentMethod}}</td>
+                        <td>{{this.status}}</td>
+                        <td>
+                            {{#if cancel}}
+                            <p>cancelled</p>
+                            {{else}}
+                            <select class="bg-dark text-white" name="forma" onchange="location = this.value;">
+
+                                <option>{{this.status}}</option>
+                                <option value="/admin/status-shipped?id={{this._id}}&userId={{this.userId}}">shipped
+                                </option>
+                                <option value="/admin/status-delivered?id={{this._id}}">delivered
+                                </option>
+                                <option value="/admin/status-cancelled?id={{this._id}}&userId={{this.userId}}">cancel
+                                </option>
+
+                                {{/if}}
+                            </select>
+
+                        </td>
+
+                        {{!-- <td><a href="/admin/viewUserProducts/{{this._id}}" class="btn btn-primary">details</a></td> --}}
+                        <td><button class="btn-primary"><a
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/viewUserProducts/{{this._id}}">Details</a></button></td>
+
+                        {{!-- <td>{{this.big_text}}</td>
+                        <td><img style="width:50px; height:50px" src="/images/{{this.images.[0]}}" alt=""
+                                class="rounded" /></td>
+                        <td><button class="btn-primary"><a
+                                    onclick="return confirm('Are you sure to edit in this banner details')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/edit-banner/{{this._id}}">EDIT</a></button></td>
+                        <td><button class="btn-danger"><a
+                                    onclick="return confirm('Are you sure to delete in this banner details')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/delete-banner/{{this._id}}">DELETE</a></button></td> --}}
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+            $('#hide').css('display', 'block');
+        });
+
+
+        var table = $('#placed').DataTable();
+    </script>
+</div>
+
+{{!-- ORDER MANAGE--}}

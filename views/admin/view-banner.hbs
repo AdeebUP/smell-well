@@ -1,0 +1,53 @@
+{{!-- BANNER MANAGE--}}
+<div class="dash-container mt-5 p-4">
+    <h4 class="text-center mb-5">All Banner</h4>
+    <section>
+        <div class="container shadow p-2">
+            <table class="table " id="placed">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl.No</th>
+                        <th scope="col">Small Text</th>
+                        <th scope="col">Big Text</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each banner}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td> {{this.small_text}}</td>
+                        <td>{{this.big_text}}</td>
+                        <td><img style="width:50px; height:50px" src="/images/{{this.images.[0]}}" alt=""
+                                class="rounded" /></td>
+                        <td><button class="btn-primary"><a onclick="return confirm('Are you sure to edit in this banner details')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/edit-banner/{{this._id}}">EDIT</a></button></td>
+                        <td><button class="btn-danger"><a onclick="return confirm('Are you sure to delete in this banner details')"
+                                    style="text-decoration:none; color:white"
+                                    href="/admin/delete-banner/{{this._id}}">DELETE</a></button></td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+            $('#hide').css('display', 'block');
+        });
+
+
+        var table = $('#placed').DataTable();
+    </script>
+</div>
+
+{{!-- BANNER MANAGE--}}

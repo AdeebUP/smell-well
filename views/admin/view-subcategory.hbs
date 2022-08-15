@@ -1,0 +1,99 @@
+<!-- sub-category manage -->
+
+{{!-- <div class="container-xxl flex-grow-1 container-p-y ">
+    <div class="demo-inline-spacing mb-3 d-flex align-items-end justify-content-end">
+        <a type="button" href="/admin/add-subcategory" class="btn rounded-pill btn-outline-success">
+            <span class="tf-icons bx bx-cart"></span>&nbsp; Add Sub-Category
+        </a>
+    </div>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h5 class="card-header">All Sub-Category</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Sub-Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    {{#each subcategory}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{this.subcategory_name}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a onclick="return confirm('Are you sure to edit this subcategory')"
+                                        class="dropdown-item" href="/admin/edit-subcategory/{{this._id}}"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a onclick="return confirm('Are you sure to delete this subcategory')"
+                                        class="dropdown-item" href="/admin/delete-subcategory/{{this._id}}"><i
+                                            class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table --> --}}
+
+    {{!-- CATEGORY MANAGE--}} <div class="dash-container mt-5 p-4">
+        <h4 class="text-center mb-5">All Sub-Category</h4>
+        <section>
+            <div class="container shadow p-2">
+                <table class="table " id="placed">
+                    <thead>
+                        <tr>
+                            <th>Sl.No</th>
+                            <th>Sub-Category</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each subcategory}}
+                        <tr>
+                            <td>{{inc @index}}</td>
+                            <td>{{this.subcategory_name}}</td>
+                            <td><button class="btn-primary"><a
+                                        onclick="return confirm('Are you sure to edit this sub-category')"
+                                        style="text-decoration:none; color:white"
+                                        href="/admin/edit-subcategory/{{this._id}}">EDIT</a></button></td>
+                            <td><button class="btn-danger"><a
+                                        onclick="return confirm('Are you sure to delete this sub-category')"
+                                        style="text-decoration:none; color:white"
+                                        href="/admin/delete-subcategory/{{this._id}}">DELETE</a></button></td>
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- / sub-category manage -->
+
+        <script>
+            $(document).ready(function () {
+
+
+                $('#user_table').wrap('<div id="hide" style="display:none"/>');
+
+                $('#hide').css('display', 'block');
+            });
+
+
+            var table = $('#placed').DataTable();
+        </script>
+    </div>
