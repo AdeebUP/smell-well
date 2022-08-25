@@ -1,6 +1,6 @@
 const db = require('../../config/connection')
 const collection = require('../../config/collections')
-
+const { resolve } = require('express-hbs/lib/resolver')
 const ObjectId = require('mongodb').ObjectId
 
 
@@ -24,7 +24,7 @@ module.exports = {
                     resolve({ status: false })
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -38,7 +38,7 @@ module.exports = {
                     }
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -51,7 +51,7 @@ module.exports = {
                     resolve(view)
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -65,7 +65,7 @@ module.exports = {
                 }
                 resolve()
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -77,7 +77,7 @@ module.exports = {
                     resolve(response)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -88,7 +88,7 @@ module.exports = {
                     resolve(product)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -114,7 +114,7 @@ module.exports = {
                         resolve()
                     })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -128,7 +128,7 @@ module.exports = {
                     resolve()
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -144,7 +144,7 @@ module.exports = {
                         resolve()
                     })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -160,7 +160,7 @@ module.exports = {
                         resolve()
                     })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -173,7 +173,7 @@ module.exports = {
                     }
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -185,7 +185,7 @@ module.exports = {
                     resolve(category)
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -197,7 +197,7 @@ module.exports = {
                     resolve(response)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -208,7 +208,7 @@ module.exports = {
                     resolve(category)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
@@ -224,10 +224,11 @@ module.exports = {
                         resolve()
                     })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     addSubCategory: (subcategory) => {
         return new Promise((resolve, reject) => {
             try {
@@ -238,10 +239,11 @@ module.exports = {
                     }
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     viewSubCategory: () => {
         return new Promise(async (resolve, reject) => {
             try {
@@ -250,10 +252,11 @@ module.exports = {
                     resolve(subcategory)
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     deleteSubCategory: (subId) => {
         return new Promise((resolve, reject) => {
             try {
@@ -261,10 +264,11 @@ module.exports = {
                     resolve(response)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     getSubCategoryDetails: (subId) => {
         return new Promise((resolve, reject) => {
             try {
@@ -272,10 +276,11 @@ module.exports = {
                     resolve(subcategory)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     updateSubCategory: (subId, subDetails) => {
 
         return new Promise((resolve, reject) => {
@@ -289,10 +294,11 @@ module.exports = {
                         resolve()
                     })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     addBanner: (bannerData) => {
         return new Promise((resolve, reject) => {
             try {
@@ -302,10 +308,11 @@ module.exports = {
                     }
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     viewBanner: () => {
         return new Promise(async (resolve, reject) => {
             try {
@@ -314,10 +321,11 @@ module.exports = {
                     resolve(banner)
                 }
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     deleteBanner: (id) => {
         return new Promise((resolve, reject) => {
             try {
@@ -325,10 +333,11 @@ module.exports = {
                     resolve(response)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     editBannerDetails: (id) => {
         return new Promise((resolve, reject) => {
             try {
@@ -336,10 +345,11 @@ module.exports = {
                     resolve(banner)
                 })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     updateBanner: (id, banDetails, image) => {
         return new Promise((resolve, reject) => {
             try {
@@ -356,10 +366,11 @@ module.exports = {
                             resolve()
                         })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
     changeStatus: (orderId, status) => {
 
         console.log("reached in heepers");
@@ -375,11 +386,12 @@ module.exports = {
                             resolve(response)
                         })
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
 
     },
+
     getOrderManaged: (userId) => {
         return new Promise(async (resolve, reject) => {
             try {
@@ -387,10 +399,182 @@ module.exports = {
                     .find().toArray()
                 resolve(orders)
             } catch (err) {
-                next(err)
+                reject(err)
             }
         })
     },
+
+    // AddCoupon: (data) => {
+    //     console.log(data)
+    //     return new Promise(async (resolve, reject) => {
+    //         const newcoupon = new couponmodel({
+
+    //             couponName: data.CouponName,
+    //             couponCode: data.CouponCode,
+    //             limit: data.limit,
+    //             discount: data.discount,
+    //             expirydate: data.expirydate
+
+    //         })
+    //         console.log(newcoupon)
+    //         await newcoupon.save();
+    //         console.log("*******")
+    //         resolve()
+    //     })
+    // },
+
+    // getAllcoupons: () => {
+    //     return new Promise(async (resolve, reject) => {
+
+    //         const allcoupons = await couponmodel.find({}).lean()
+    //         console.log(allcoupons)
+    //         resolve(allcoupons)
+    //     })
+
+    // },
+
+    // deleteCoupon: (proId) => {
+    //     return new Promise(async (resolve, reject) => {
+    //         const removecoupon = await couponmodel.findByIdAndDelete({ _id: proId })
+    //         resolve(removecoupon)
+    //     })
+    // }
+
+    getAllCoupons: () => {
+        return new Promise(async (resolve, reject) => {
+            let coupon = await db.get().collection(collection.COUPON_COLLECTION).find().toArray()
+            resolve(coupon)
+        })
+
+    },
+    AddCoupon: (couponData) => {
+        console.log(couponData);
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.COUPON_COLLECTION).insertOne({
+                name: couponData.name,
+                offer: couponData.offer,
+                validity: couponData.validity,
+                time: Date.now()
+            })
+            resolve()
+        })
+
+    },
+    DeleteCoupon: (couponId) => {
+        return new Promise(async (resolve, reject) => {
+            db.get().collection(collection.COUPON_COLLECTION).deleteOne({ _id: ObjectId(couponId) }).then(() => {
+                resolve()
+            })
+        })
+    },
+
+
+
+    getOrderCount: () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let orderCount = await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+                if (orderCount.length != 0) {
+                    resolve(orderCount.length)
+                }
+                else {
+                    resolve(0)
+                }
+            } catch (error) {
+                console.log(error);
+                reject(error)
+            }
+        })
+    },
+
+    getUserCount: () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let userCount = await db.get().collection(collection.USER_COLLECTION).find().toArray()
+                if (userCount.length != 0) {
+                    resolve(userCount.length)
+                }
+                else {
+                    resolve(0)
+                }
+            } catch (error) {
+                console.log(error);
+                reject(error)
+            }
+        })
+    },
+
+    getOrderShipped: () => {
+            return new Promise(async (resolve, reject) => {
+            try {
+                let shippedCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'shipped'}).toArray()
+    
+              if (shippedCount.length != 0) {
+                resolve(shippedCount.length)
+            }
+            else {
+                resolve(0)
+            }
+            } catch (error) {
+                console.log(error);
+                reject(error)
+            }
+        })
+    },
+    getOrderPlaced: () => {
+        return new Promise(async (resolve, reject) => {
+        try {
+            let placedCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'placed'}).toArray()
+
+          if (placedCount.length != 0) {
+            resolve(placedCount.length)
+        }
+        else {
+            resolve(0)
+        }
+        } catch (error) {
+            console.log(error);
+            reject(error)
+        }
+    })
+},
+
+
+getOrderDelivered: () => {
+    return new Promise(async (resolve, reject) => {
+    try {
+        let deliveredCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'Delivered'}).toArray()
+
+      if (deliveredCount.length != 0) {
+        resolve(deliveredCount.length)
+    }
+    else {
+        resolve(0)
+    }
+    } catch (error) {
+        console.log(error);
+        reject(error)
+    }
+})
+},
+
+getOrderCancelled: () => {
+    return new Promise(async (resolve, reject) => {
+    try {
+        let cancelledCount = await db.get().collection(collection.ORDER_COLLECTION).find({status:'cancelled'}).toArray()
+
+      if (cancelledCount.length != 0) {
+        resolve(cancelledCount.length)
+    }
+    else {
+        resolve(0)
+    }
+    } catch (error) {
+        console.log(error);
+        reject(error)
+    }
+})
+},
 
 
 

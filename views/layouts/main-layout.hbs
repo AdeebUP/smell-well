@@ -43,44 +43,51 @@
 	<link rel="stylesheet" type="text/css" href="/user/css/main.css">
 	<!--===============================================================================================-->
 
+	{{!-- data table --}}
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 
 	{{!-- login & signup --}}
 
-	<!-- Favicon -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"
+		integrity="sha512vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A=="
+		crossorigin="anonymous">
+
+
+	<!--Favicon -->
 	<link rel="icon" type="image/x-icon" href="/admin/assets/img/favicon/favicon.ico" />
 
-	<!-- Fonts -->
+	<!--Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link
 		href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
 		rel="stylesheet" />
 
-	<!-- Icons. Uncomment required icon fonts -->
+	<!--Icons.Uncomment required icon fonts-- >
 	<link rel="stylesheet" href="/admin/assets/vendor/fonts/boxicons.css" />
 
-	<!-- Core CSS -->
+	<!--Core CSS-- >
 	<link rel="stylesheet" href="/admin/assets/vendor/css/core.css" class="template-customizer-core-css" />
 	<link rel="stylesheet" href="/admin/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
 	<link rel="stylesheet" href="/admin/assets/css/demo.css" />
 
-	<!-- Vendors CSS -->
+	< !--Vendors CSS-- >
 	<link rel="stylesheet" href="/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-	<!-- Page CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	{{!-- data table --}}
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-	<script type="text/javascript" charset="utf8"
-		src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	< !--Page CSS-- >
+				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+					integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-	<!-- Page -->
-	<link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
-	<!-- Helpers -->
-	<script src="/admin/assets/vendor/js/helpers.js"></script>
+					
+
+					<!-- Page -->
+					<link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
+					<!-- Helpers -->
+					<script src="/admin/assets/vendor/js/helpers.js"></script>
 	<script src="/admin/assets/js/config.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -141,87 +148,90 @@
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 
+	    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
 	<script>
-		$(".js-select2").each(function () {
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
+				$(".js-select2").each(function () {
+					$(this).select2({
+						minimumResultsForSearch: 20,
+						dropdownParent: $(this).next('.dropDownSelect2')
+					});
 		})
 	</script>
 
 	<script>
-		$('.parallax100').parallax100();
+				$('.parallax100').parallax100();
 	</script>
 
 	<script>
-		$('.gallery-lb').each(function () {
+				$('.gallery-lb').each(function () {
 
-			// the containers for all your galleries
+					// the containers for all your galleries
 
-			$(this).magnificPopup({
-				delegate: 'a',
+					$(this).magnificPopup({
+						delegate: 'a',
 
-				// the selector for gallery item
+						// the selector for gallery item
 
-				type: 'image',
-				gallery: {
-					enabled: true
-				},
-				mainClass: 'mfp-fade'
-			});
+						type: 'image',
+						gallery: {
+							enabled: true
+						},
+						mainClass: 'mfp-fade'
+					});
 		});
 	</script>
 
 	<script>
-		$('.js-addwish-b2').on('click', function (e) {
-			e.preventDefault();
+				$('.js-addwish-b2').on('click', function (e) {
+					e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function () {
+				$('.js-addwish-b2').each(function () {
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function () {
-				swal(nameProduct, "is added to wishlist !", "success");
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
 				$(this).off('click');
 			});
 		});
 
-		$('.js-addwish-detail').each(function () {
+				$('.js-addwish-detail').each(function () {
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function () {
-				swal(nameProduct, "is added to wishlist !", "success");
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
 				$(this).off('click');
 			});
 		});
 
-		/*---------------------------------------------*/
+				/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function () {
+				$('.js-addcart-detail').each(function () {
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function () {
-				swal(nameProduct, "is added to cart !", "success");
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to cart !", "success");
 			});
 		});
 
 	</script>
 
 	<script>
-		$('.js-pscroll').each(function () {
-			$(this).css('position', 'relative');
-			$(this).css('overflow', 'hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
+				$('.js-pscroll').each(function () {
+					$(this).css('position', 'relative');
+				$(this).css('overflow', 'hidden');
+				var ps = new PerfectScrollbar(this, {
+					wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function () {
-				ps.update();
+				$(window).on('resize', function () {
+					ps.update();
 			})
 		});
 	</script>

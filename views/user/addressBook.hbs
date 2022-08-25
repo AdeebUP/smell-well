@@ -1,0 +1,28 @@
+{{>user-header1}}
+<div style="margin-left: 50px;">
+    <div class="d-flex ">
+        {{#each addressBook.address}}
+        <div class="col-md-3 "
+            style="border:solid #847f7f; background-color: #fff;margin-bottom: 10px; margin-left:10px ;">
+            <dl class="text-left">
+                <dt>{{ this.First_Name }}
+                    {{ this.Last_Name }}</dt>
+                <dd>"{{ this.Company_Name }}"</dd>
+                <dd>{{ this.Street_Address }},{{ this.Extra_Details }}</dd>
+                <dd>{{ this.Town_City }},
+                    {{ this.Country_State }}</dd>
+                <dd>PIN:{{ this.Post_Code }}</dd>
+                <dd>Ph:{{ this.Phone }}</dd>
+                <dd>Alt-Ph:{{ this.Alt_Phone }}</dd>
+                <dd>
+                    <a href="/remove-address/{{this.addressId}}" onclick="return confirm('Are you sure?')"
+                        class="btn btn-danger ml-3">REMOVE</a>
+                </dd>
+
+
+            </dl>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{>user-footer}}

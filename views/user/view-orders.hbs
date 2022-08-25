@@ -14,7 +14,9 @@
                         <th scope="col">PAYMENT</th>
                         <th scope="col">STATUS</th>
                         <th scope="col">VIEW</th>
+                        <th scope="col">INVOICE</th>
                         <th scope="col">ACTION</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +33,10 @@
                                     Products</a>
                             </button>
                         </td>
+                        <td>
+                            <button class="btn btn-link text-white"><a href="/invoice/{{this._id}}">View Invoice</a>
+                            </button>
+                        </td>
                         {{#if cancel}}
 
                         {{else}}
@@ -39,6 +45,7 @@
                             </button>
                         </td>
                         {{/if}}
+
                     </tr>
                     {{/each}}
 

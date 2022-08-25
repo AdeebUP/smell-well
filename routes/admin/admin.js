@@ -8,10 +8,20 @@ const moment = require('moment')
 
 /* GET users listing. */
 // login
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         if (req.session.adminloginIn) {
-            res.render('admin/index', { layout: "admin-layout", adminHeader: true })
+         let orderCount=await adminHelpers.getOrderCount()
+         let userCount=await adminHelpers.getUserCount()
+         let orderShippedCount=await adminHelpers.getOrderShipped()
+         let orderPlacedCount  =await adminHelpers.getOrderPlaced()
+         let orderDeliveredCount  =await adminHelpers.getOrderDelivered()
+         let orderCancelledCount  =await adminHelpers.getOrderCancelled()
+         console.log(orderShippedCount,"///////////////////////////orderCount");
+         console.log(orderPlacedCount,"///////////////////////////orderPlacedCount");
+         console.log(orderDeliveredCount,"///////////////////////////orderDeliveredCount");
+         console.log(orderCancelledCount,"///////////////////////////orderCancelledCount");
+         res.render('admin/index', { layout: "admin-layout", adminHeader: true ,orderCount,userCount,orderShippedCount,orderPlacedCount,orderDeliveredCount,orderCancelledCount})
         } else {
             res.redirect('/admin/login')
         }
@@ -413,7 +423,7 @@ router.get('/status-shipped', (req, res, next) => {
     try {
         console.log("reached here");
         let orderId = req.query.id
-        let userId=req.query.userId
+        let userId = req.query.userId
         console.log(orderId);
         let status = 'shipped'
         adminHelpers.changeStatus(orderId, status).then((response) => {
@@ -427,7 +437,7 @@ router.get('/status-shipped', (req, res, next) => {
 router.get('/status-delivered', (req, res, next) => {
     try {
         let orderId = req.query.id
-       
+
         let status = 'Delivered'
         adminHelpers.changeStatus(orderId, status).then((response) => {
             res.redirect('/admin/orderManage')
@@ -446,6 +456,43 @@ router.get('/status-cancelled', (req, res, next) => {
     } catch (err) {
         next(err)
     }
+})
+
+// coupon
+
+router.get('/add-coupon', (req, res) => {
+    res.render('admin/add-coupon', { layout: 'admin-layout'})
+})
+
+router.post('/add-coupon', (req, res) => {
+    console.log("dbskjnsfbhjsjnfsfwskj");
+    console.log(req.body);
+    adminHelpers.AddCoupon(req.body).then(() => {
+        res.redirect('/admin/add-coupon')
+    })
+})
+
+router.get('/view-coupon', (req, res) => {
+    adminHelpers.getAllCoupons().then((coupon) => {
+        res.render('admin/view-coupon', { layout: 'admin-layout', coupon })
+    })
+
+})
+
+// router.get("/deleteCoupons/:id", (req, res) => {
+//     console.log("************")
+//     console.log(req.params.id)
+
+//     adminHelpers.deleteCoupon(req.params.id).then((response) => {
+//         console.log("1000000000001")
+//         res.redirect("/admin/viewCoupons")
+//     })
+
+// })
+router.get('/delete-coupon/:id', (req, res) => {
+    console.log(req.params);
+    adminHelpers.DeleteCoupon(req.params.id)
+    res.redirect('/admin/view-coupon')
 })
 
 router.get('/*', (req, res) => {
